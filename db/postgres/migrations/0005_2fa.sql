@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS user_totp (
+  user_id BIGINT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  secret TEXT NOT NULL,
+  enabled BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMPTZ DEFAULT now(), updated_at TIMESTAMPTZ DEFAULT now()
+);
