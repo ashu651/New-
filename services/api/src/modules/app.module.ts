@@ -9,6 +9,8 @@ import { User } from '../orm/user.entity';
 import { AuthModule } from './auth.module';
 import { PostEntity } from '../orm/post.entity';
 import { PostsController } from './posts.controller';
+import { RecsController } from './recs.controller';
+import { SearchController } from './search.controller';
 
 @Module({
   imports: [
@@ -30,7 +32,7 @@ import { PostsController } from './posts.controller';
     TypeOrmModule.forFeature([User, PostEntity]),
     AuthModule
   ],
-  controllers: [HealthController, PostsController],
+  controllers: [HealthController, PostsController, RecsController, SearchController],
   providers: [HealthResolver]
 })
 export class AppModule {}

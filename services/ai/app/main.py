@@ -5,6 +5,9 @@ import os
 
 app = FastAPI(title="Snapzy AI")
 
+from .recs import router as recs_router
+app.include_router(recs_router)
+
 _model_name = os.getenv("SENTENCE_TRANSFORMERS_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 _model: SentenceTransformer | None = None
 

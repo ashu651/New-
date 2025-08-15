@@ -60,6 +60,18 @@ flowchart LR
 - Topic Circles; Quality-score follows; Communities & mods; Expertise badges; Subscriptions; Tips; Shop-in-profile; Affiliate graph; Sponsor marketplace
 - Context labels; Comment safety layers; Digital wellbeing; Transparent appeals; Semantic search; Personalized Explore; Feature flags & A/B; Edge-cached hot feeds
 
+## Next‑gen capabilities (beyond Instagram/TikTok/Snap)
+- AI-first creation: co-creator templates, auto-chapters/transcripts, smart remixes, semantic cover selection
+- Smart Albums with rules; cross-account collaborative albums and posts with granular roles and rev-split
+- Topic Circles and Communities with moderator tools, safety layers, appeals, and transparent audit trails
+- Tunable Explore: user-facing dials to adjust novelty, proximity, expertise, and safety
+- Quality-score follows and content quality signals blending embeddings + graph + freshness
+- E2E DMs with topic threads, guardianship for minors’ accounts, and wellbeing controls (hide likes, quiet hours)
+- Sponsor marketplace with escrow and affiliate graph; creator shops, subscriptions, tips; UPI + Stripe
+- Feature flags and robust A/B experiments; blue‑green/canary deploys; rollbacks
+- Edge-cached hot feeds; realtime notifications and live presence; multi-camera capture and drafting across devices
+- Hybrid search (OpenSearch + pgvector) and vector-powered semantic recommendations
+
 ## Monorepo Structure
 ```
 apps/
