@@ -19,6 +19,7 @@ import { CommentsController } from './comments.controller';
 import { OauthController } from './oauth.controller';
 import { TotpController } from './totp.controller';
 import { NotificationsController } from './notifications.controller';
+import { ReactionsController } from './reactions.controller';
 
 @Module({
   imports: [
@@ -40,7 +41,7 @@ import { NotificationsController } from './notifications.controller';
     TypeOrmModule.forFeature([User, PostEntity, CommentEntity]),
     AuthModule
   ],
-  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController, DmController, PaymentsController, CommentsController, OauthController, TotpController, NotificationsController],
+  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController, DmController, PaymentsController, CommentsController, OauthController, TotpController, NotificationsController, ReactionsController],
   providers: [HealthResolver]
 })
 export class AppModule {}
