@@ -14,6 +14,8 @@ import { SearchController } from './search.controller';
 import { FlagsController } from './flags.controller';
 import { DmController } from './dm.controller';
 import { PaymentsController } from './payments.controller';
+import { CommentEntity } from '../orm/comment.entity';
+import { CommentsController } from './comments.controller';
 
 @Module({
   imports: [
@@ -29,13 +31,13 @@ import { PaymentsController } from './payments.controller';
       username: process.env.POSTGRES_USER || 'snapzy',
       password: process.env.POSTGRES_PASSWORD || 'snapzy',
       database: process.env.POSTGRES_DB || 'snapzy',
-      entities: [User, PostEntity],
+      entities: [User, PostEntity, CommentEntity],
       synchronize: false
     }),
-    TypeOrmModule.forFeature([User, PostEntity]),
+    TypeOrmModule.forFeature([User, PostEntity, CommentEntity]),
     AuthModule
   ],
-  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController, DmController, PaymentsController],
+  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController, DmController, PaymentsController, CommentsController],
   providers: [HealthResolver]
 })
 export class AppModule {}
