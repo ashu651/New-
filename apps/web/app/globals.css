@@ -2,10 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light dark; }
+:root {
+  /* Light theme tokens */
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #7c3aed;
+  --primary-contrast: #ffffff;
+}
 
-* { outline-color: #7C3AED; }
+:root.dark {
+  /* Dark theme tokens */
+  --bg: #0b0b0f;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: #1f2937;
+  --primary: #a78bfa;
+  --primary-contrast: #0b0b0f;
+}
 
-html, body { height: 100%; }
+:root[data-theme="high-contrast"] {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #d1d5db;
+  --border: #ffffff;
+  --primary: #00ffff;
+  --primary-contrast: #000000;
+}
+
+html, body { height: 100%; background: var(--bg); color: var(--text); }
+
+* { outline-color: var(--primary); }
 
 a { text-decoration: none; }
+
+/* Accessible focus */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
+/* Skeleton shimmer */
+.skeleton { position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12), rgba(0,0,0,0.06)); }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); animation: shimmer 1.2s infinite; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
