@@ -11,6 +11,7 @@ import { PostEntity } from '../orm/post.entity';
 import { PostsController } from './posts.controller';
 import { RecsController } from './recs.controller';
 import { SearchController } from './search.controller';
+import { FlagsController } from './flags.controller';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import { SearchController } from './search.controller';
     TypeOrmModule.forFeature([User, PostEntity]),
     AuthModule
   ],
-  controllers: [HealthController, PostsController, RecsController, SearchController],
+  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController],
   providers: [HealthResolver]
 })
 export class AppModule {}

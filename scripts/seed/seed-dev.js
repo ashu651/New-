@@ -36,6 +36,12 @@ const { Client: OSClient } = require('@opensearch-project/opensearch');
   await os.index({ index: 'users_idx', id: String(user.id), body: { id: user.id, handle: 'demo', name: 'Demo User', is_verified: true } });
   console.log('Indexed user in OpenSearch');
 
+  await pg.query(`INSERT INTO communities(name, slug, description, created_by) VALUES($1,$2,$3,$4) ON CONFLICT (slug) DO NOTHING`, ['Creators United','creators-united','A community for creators', user.id]);
+  const badge = await pg.query(`INSERT INTO expertise_badges(name, criteria) VALUES('Photography Pro','{}') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id`);
+  await pg.query(`INSERT INTO user_badges(user_id, badge_id) VALUES($1,$2) ON CONFLICT DO NOTHING`, [user.id, badge.rows[0].id]);
+  await pg.query(`INSERT INTO ab_experiments(key, description, variants) VALUES('explore_ranker','Explore ranker test','{"control":50,"treatment":50}') ON CONFLICT (key) DO NOTHING`);
+  await pg.query(`INSERT INTO ab_assignments(user_id, experiment_key, variant) VALUES($1,'explore_ranker','treatment') ON CONFLICT (user_id, experiment_key) DO NOTHING`, [user.id]);
+
   await pg.end();
   process.exit(0);
 })().catch((e) => { console.error(e); process.exit(1); });

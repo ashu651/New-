@@ -11,9 +11,9 @@ import (
 	redis "github.com/redis/go-redis/v9"
 )
 
-type Hub struct {
-	clients map[*websocket.Conn]bool
-}
+type RoomHub struct { rooms map[string]map[*websocket.Conn]bool }
+
+type Hub struct { clients map[*websocket.Conn]bool }
 
 func main() {
 	app := fiber.New()
@@ -24,7 +24,7 @@ func main() {
 	ctx := context.Background()
 	if err := rdb.Ping(ctx).Err(); err != nil { log.Fatal(err) }
 
-	hub := &Hub{clients: make(map[*websocket.Conn]bool)}
+	hub := &RoomHub{ rooms: make(map[string]map[*websocket.Conn]bool) }
 
 	app.Get("/health", func(c *fiber.Ctx) error { return c.JSON(fiber.Map{"ok": true}) })
 
@@ -33,13 +33,15 @@ func main() {
 		return fiber.ErrUpgradeRequired
 	})
 
-	app.Get("/ws", websocket.New(func(conn *websocket.Conn) {
-		hub.clients[conn] = true
-		defer func() { delete(hub.clients, conn); conn.Close() }()
+	app.Get("/ws/:room", websocket.New(func(conn *websocket.Conn) {
+		room := conn.Params("room")
+		if hub.rooms[room] == nil { hub.rooms[room] = make(map[*websocket.Conn]bool) }
+		hub.rooms[room][conn] = true
+		defer func() { delete(hub.rooms[room], conn); conn.Close() }()
 		for {
 			_, msg, err := conn.ReadMessage()
 			if err != nil { break }
-			for client := range hub.clients {
+			for client := range hub.rooms[room] {
 				client.WriteMessage(websocket.TextMessage, msg)
 			}
 		}
@@ -47,7 +49,7 @@ func main() {
 
 	go func(){
 		for range time.Tick(30 * time.Second) {
-			for client := range hub.clients { client.WriteMessage(websocket.TextMessage, []byte("ping")) }
+			for _, clients := range hub.rooms { for client := range clients { client.WriteMessage(websocket.TextMessage, []byte("ping")) } }
 		}
 	}()
 
