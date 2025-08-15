@@ -12,6 +12,8 @@ import { PostsController } from './posts.controller';
 import { RecsController } from './recs.controller';
 import { SearchController } from './search.controller';
 import { FlagsController } from './flags.controller';
+import { DmController } from './dm.controller';
+import { PaymentsController } from './payments.controller';
 
 @Module({
   imports: [
@@ -33,7 +35,7 @@ import { FlagsController } from './flags.controller';
     TypeOrmModule.forFeature([User, PostEntity]),
     AuthModule
   ],
-  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController],
+  controllers: [HealthController, PostsController, RecsController, SearchController, FlagsController, DmController, PaymentsController],
   providers: [HealthResolver]
 })
 export class AppModule {}
