@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light dark; }
+
+* { outline-color: #7C3AED; }
+
+html, body { height: 100%; }
+
+a { text-decoration: none; }

@@ -1,0 +1,28 @@
+{
+  "name": "@snapzy/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.tsx --format cjs,esm --dts --clean --external react --external react/jsx-runtime",
+    "dev": "tsup src/index.tsx --watch --external react --external react/jsx-runtime",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "test": "vitest run",
+    "format": "prettier -w src"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.4",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.3",
+    "vitest": "^2.0.5"
+  }
+}
