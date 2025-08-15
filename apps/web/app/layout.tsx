@@ -1,6 +1,6 @@
 import './globals.css';
 import type { ReactNode } from 'react';
-import { tokens } from '@snapzy/design-system';
+import ClientNav from '../components/ClientNav';
 
 export const metadata = {
   title: 'Snapzy',
@@ -10,7 +10,8 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body style={{ background: tokens.colors.bgLight, color: tokens.colors.textDark }}>
+      <body>
+        <ClientNav />
         {children}
       </body>
     </html>

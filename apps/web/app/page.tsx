@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Button } from '@snapzy/design-system';
 
 export default function HomePage() {
   return (
@@ -9,8 +8,8 @@ export default function HomePage() {
         An Instagram-beating social platform with AI co-creation, collaborative posts, and blazing realtime.
       </p>
       <div className="flex gap-3">
-        <Link href="/auth/login"><Button>Login</Button></Link>
-        <Link href="/explore"><Button variant="ghost">Explore</Button></Link>
+        <Link href="/auth/login"><button className="bg-primary text-white rounded-md px-4 py-2">Login</button></Link>
+        <Link href="/explore"><button className="border rounded-md px-4 py-2">Explore</button></Link>
       </div>
     </main>
   );

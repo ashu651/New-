@@ -1,12 +1,15 @@
+export { ThemeProvider, useTheme } from './theme';
+
 export const tokens = {
   colors: {
     primary: '#7C3AED',
     primaryDark: '#5B21B6',
     bg: '#0B0B0F',
     bgLight: '#FFFFFF',
-    text: '#F5F6F8',
-    textDark: '#111827',
-    muted: '#9CA3AF'
+    text: '#111827',
+    textOnDark: '#F9FAFB',
+    muted: '#6B7280',
+    border: '#E5E7EB'
   },
   radii: { sm: 8, md: 12, lg: 16, xl: 24, pill: 999 },
   spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, '2xl': 32 },
@@ -38,8 +41,43 @@ export function Button({ variant = 'primary', size = 'md', style, ...rest }: But
 
   const variants: Record<string, React.CSSProperties> = {
     primary: { background: tokens.colors.primary, color: 'white' },
-    ghost: { background: 'transparent', color: tokens.colors.textDark, border: '1px solid #E5E7EB' }
+    ghost: { background: 'transparent', color: tokens.colors.text, border: `1px solid ${tokens.colors.border}` }
   };
 
   return <button style={{ ...base, ...variants[variant], ...style }} {...rest} />;
+}
+
+export function Card({ style, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
+  const base: React.CSSProperties = { borderRadius: tokens.radii.lg, boxShadow: tokens.shadow.md, border: `1px solid ${tokens.colors.border}`, padding: 16, background: 'white' };
+  return <div style={{ ...base, ...style }} {...rest} />;
+}
+
+export function TextField(props: React.InputHTMLAttributes<HTMLInputElement>) {
+  const style: React.CSSProperties = { borderRadius: tokens.radii.md, border: `1px solid ${tokens.colors.border}`, padding: '10px 12px', width: '100%' };
+  return <input {...props} style={{ ...style, ...(props.style || {}) }} />;
+}
+
+export function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label?: string }) {
+  return (
+    <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+      <span>{label}</span>
+      <input type="checkbox" role="switch" aria-checked={checked} checked={checked} onChange={(e)=>onChange(e.target.checked)} />
+    </label>
+  );
+}
+
+export function Navbar({ onToggleTheme }: { onToggleTheme: () => void }) {
+  const navStyle: React.CSSProperties = { display: 'flex', gap: 12, padding: 12, borderBottom: `1px solid ${tokens.colors.border}`, alignItems: 'center', justifyContent: 'space-between' };
+  return (
+    <div style={navStyle}>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <a href="/">Home</a>
+        <a href="/feed">Feed</a>
+        <a href="/compose">Compose</a>
+        <a href="/inbox">Inbox</a>
+        <a href="/settings/explore">Explore</a>
+      </div>
+      <Button variant="ghost" onClick={onToggleTheme}>Theme</Button>
+    </div>
+  );
 }
