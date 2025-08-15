@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapzy-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: snapzy-api }
+  template:
+    metadata:
+      labels: { app: snapzy-api }
+    spec:
+      containers:
+        - name: api
+          image: {{ .Values.image.api }}
+          env:
+            - name: API_PORT
+              value: "{{ .Values.env.API_PORT }}"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapzy-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: snapzy-web }
+  template:
+    metadata:
+      labels: { app: snapzy-web }
+    spec:
+      containers:
+        - name: web
+          image: {{ .Values.image.web }}
+          env:
+            - name: NEXT_PUBLIC_API_URL
+              value: "{{ .Values.env.NEXT_PUBLIC_API_URL }}"
+            - name: NEXT_PUBLIC_GRAPHQL_URL
+              value: "{{ .Values.env.NEXT_PUBLIC_GRAPHQL_URL }}"
+            - name: NEXT_PUBLIC_REALTIME_WS
+              value: "{{ .Values.env.NEXT_PUBLIC_REALTIME_WS }}"
+          ports:
+            - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapzy-realtime
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: snapzy-realtime }
+  template:
+    metadata:
+      labels: { app: snapzy-realtime }
+    spec:
+      containers:
+        - name: realtime
+          image: {{ .Values.image.realtime }}
+          ports:
+            - containerPort: 8083
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapzy-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: snapzy-ai }
+  template:
+    metadata:
+      labels: { app: snapzy-ai }
+    spec:
+      containers:
+        - name: ai
+          image: {{ .Values.image.ai }}
+          ports:
+            - containerPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapzy-media
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: snapzy-media }
+  template:
+    metadata:
+      labels: { app: snapzy-media }
+    spec:
+      containers:
+        - name: media
+          image: {{ .Values.image.media }}
+          ports:
+            - containerPort: 8084

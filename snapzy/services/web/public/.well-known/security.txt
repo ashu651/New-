@@ -1,0 +1,3 @@
+Contact: mailto:security@snapzy.app
+Policy: https://security.snapzy.app/policy
+Preferred-Languages: en

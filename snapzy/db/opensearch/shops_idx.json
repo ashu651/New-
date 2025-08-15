@@ -1,0 +1,17 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "folded": { "type": "custom", "tokenizer": "standard", "filter": ["lowercase", "asciifolding"] }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": { "type": "long" },
+      "name": { "type": "text", "analyzer": "folded" },
+      "description": { "type": "text", "analyzer": "folded" },
+      "currency": { "type": "keyword" }
+    }
+  }
+}

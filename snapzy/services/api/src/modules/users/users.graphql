@@ -1,0 +1,5 @@
+type User { id: ID!, handle: String!, name: String, email: String, avatar_url: String, is_verified: Boolean! }
+
+type Query { usersList(limit: Int): [User!]!, userByHandle(handle: String!): User }
+
+type Mutation { createUser(handle: String!, email: String, password: String!, name: String): User! }

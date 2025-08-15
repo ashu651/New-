@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "edge_ngram_filter": { "type": "edge_ngram", "min_gram": 2, "max_gram": 20 }
+      },
+      "analyzer": {
+        "folded": { "type": "custom", "tokenizer": "standard", "filter": ["lowercase", "asciifolding"] },
+        "edge_ngram_analyzer": { "type": "custom", "tokenizer": "standard", "filter": ["lowercase", "asciifolding", "edge_ngram_filter"] }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": { "type": "long" },
+      "author_id": { "type": "long" },
+      "caption": { "type": "text", "analyzer": "folded" },
+      "hashtags": { "type": "text", "analyzer": "edge_ngram_analyzer", "search_analyzer": "folded" },
+      "labels": { "type": "text", "analyzer": "folded" },
+      "location": { "type": "text", "analyzer": "folded" },
+      "created_at": { "type": "date" }
+    }
+  }
+}

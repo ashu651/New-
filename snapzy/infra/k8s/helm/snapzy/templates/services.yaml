@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: snapzy-api
+spec:
+  selector: { app: snapzy-api }
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snapzy-web
+spec:
+  selector: { app: snapzy-web }
+  ports:
+    - port: 80
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snapzy-realtime
+spec:
+  selector: { app: snapzy-realtime }
+  ports:
+    - port: 8083
+      targetPort: 8083
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snapzy-ai
+spec:
+  selector: { app: snapzy-ai }
+  ports:
+    - port: 8082
+      targetPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snapzy-media
+spec:
+  selector: { app: snapzy-media }
+  ports:
+    - port: 8084
+      targetPort: 8084
