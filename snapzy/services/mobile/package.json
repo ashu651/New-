@@ -1,0 +1,25 @@
+{
+  "name": "@snapzy/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "expo start -c",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "build": "echo 'Use EAS for builds'"
+  },
+  "dependencies": {
+    "expo": "~51.0.25",
+    "react": "18.3.1",
+    "react-native": "0.74.5",
+    "expo-router": "^3.5.24",
+    "@reduxjs/toolkit": "^2.2.7",
+    "react-redux": "^9.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.5.4"
+  }
+}

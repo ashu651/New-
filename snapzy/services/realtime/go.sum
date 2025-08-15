@@ -1,0 +1,3 @@
+github.com/gocql/gocql v1.7.3 h1:8y5QZpl71N9ImYgWf0bZzqNn8lsB6v2Fq1zWqk9sxbc=
+github.com/gorilla/websocket v1.5.1 h1:gmI2s8rQB3S1QUdShG5riK1iNfB7LZFwwGfH8kReXjo=
+github.com/redis/go-redis/v9 v9.5.3 h1:tQyFDvJ2dZgJQZrF1g9+OHJs+zRrYU4xQ8Oc7o0Wk9w=

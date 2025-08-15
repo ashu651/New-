@@ -1,0 +1,4 @@
+apiVersion: v2
+name: snapzy
+version: 0.1.0
+description: Snapzy application stack

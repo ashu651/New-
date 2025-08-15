@@ -1,0 +1,24 @@
+{
+  "name": "snapzy",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.6.0",
+  "workspaces": [
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "format": "pnpm -r format",
+    "typecheck": "pnpm -r typecheck",
+    "seed": "node seeds/seed.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.8.0",
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.3"
+  }
+}
