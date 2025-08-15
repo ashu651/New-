@@ -99,6 +99,7 @@ helm upgrade --install snapzy infra/k8s/helm/snapzy -n snapzy --create-namespace
 
 ## Documentation
 - INSTALL and runbook: `INSTALL.md`
+- Feature set (150+): `docs/FEATURES.md`
 - Database schemas: `db/`
 - UI/UX design system and flows: `services/web/docs/`
 - Observability dashboards: `infra/observability/`
