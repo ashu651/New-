@@ -1,0 +1,10 @@
+{
+  "name": "@snapzy/eslint-config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=9",
+    "typescript": ">=5"
+  }
+}

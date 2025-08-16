@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "index": { "number_of_shards": 1, "number_of_replicas": 0 },
+    "analysis": {
+      "filter": {
+        "edge_ngram_filter": { "type": "edge_ngram", "min_gram": 2, "max_gram": 20 }
+      },
+      "analyzer": {
+        "name_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "asciifolding", "edge_ngram_filter"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": { "type": "long" },
+      "handle": { "type": "keyword" },
+      "name": { "type": "text", "analyzer": "name_analyzer", "search_analyzer": "standard" },
+      "bio": { "type": "text" },
+      "is_verified": { "type": "boolean" },
+      "languages": { "type": "keyword" },
+      "country_code": { "type": "keyword" }
+    }
+  }
+}

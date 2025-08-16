@@ -1,0 +1,43 @@
+# Node
+node_modules/
+.pnpm-store/
+.pnp.cjs
+.pnp.loader.mjs
+.vscode/
+.idea/
+.DS_Store
+*.log
+coverage/
+dist/
+build/
+.next/
+.expo/
+.packages/
+
+# Python
+**/__pycache__/
+**/*.pyc
+.venv/
+
+# Rust
+**/target/
+
+# Go
+**/bin/
+**/pkg/
+
+# OS/Editor
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Docker
+**/.docker/
+**/.cache/
+
+# Misc
+*.sqlite
+uploads/

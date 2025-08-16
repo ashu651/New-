@@ -1,0 +1,32 @@
+{
+  "name": "snapzy",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Snapzy monorepo: Next.js web, React Native, NestJS API, Go realtime, FastAPI AI, Rust media, infra and data.",
+  "packageManager": "pnpm@9.4.0",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "format": "pnpm -r format",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "dependencies": {
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/typeorm": "^10.0.2",
+    "@types/express": "^5.0.3",
+    "cassandra-driver": "^4.7.8",
+    "express": "^5.1.0",
+    "react-dom": "18.3.1",
+    "stripe": "^16.5.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6"
+  }
+}
